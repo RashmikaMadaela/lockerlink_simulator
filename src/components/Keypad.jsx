@@ -1,15 +1,15 @@
 import orders from "../data/data"
 
-function Keypad({currentStatus, setCurrentStatus}) {
+function Keypad({currentStatus, setCurrentStatus, _currentOrder, setCurrentOrder}) {
     function handleClick(e) {
         document.getElementById("keypad-display").innerText += e.target.value
     }
 
     function handleSubmit() {
-        console.log("Entered PIN:", document.getElementById("keypad-display").innerText)
         const enteredPin = document.getElementById("keypad-display").innerText
         const order = orders.find(order => order.pin === enteredPin)
         if (order) {
+            setCurrentOrder(order.description)
             if (currentStatus) {
                 setCurrentStatus(false)
                 document.getElementById("keypad-message").innerText = `Order Found: ${order.description}. Door Unlocked.`
@@ -18,8 +18,12 @@ function Keypad({currentStatus, setCurrentStatus}) {
             }
         } else{
             document.getElementById("keypad-message").innerText = "Invalid PIN. Please try again."
+            
         }
         document.getElementById("keypad-display").innerText = ""
+        setTimeout(() => {
+                document.getElementById("keypad-message").innerText = ""
+            }, 5000)
     }
 
     function handleClear() {
