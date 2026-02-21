@@ -7,14 +7,12 @@ function App() {
 
   return (
     <>
-      <div>
-        <Keypad currentStatus={lock} setCurrentStatus={setLock} />
-      </div>
       <h1>{lock ? "Door Locked" : "Door Unlocked"}</h1>
       <div className="card">
-        <button onClick={() => setLock((lock) => !lock)}>
-          {lock ? "Unlock" : "Lock"}
-        </button>
+        {!lock && <button onClick={() => setLock((lock) => !lock)}>Lock Door</button>}
+      </div>
+      <div>
+        <Keypad currentStatus={lock} setCurrentStatus={setLock} />
       </div>
     </>
   )
