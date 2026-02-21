@@ -22,6 +22,11 @@ function Keypad({currentStatus, setCurrentStatus}) {
         document.getElementById("keypad-display").innerText = ""
     }
 
+    function handleClear() {
+        document.getElementById("keypad-display").innerText = ""
+        document.getElementById("keypad-message").innerText = ""
+    }
+
   return (
     <>
         <div className="keypad" id="keypad">
@@ -44,6 +49,7 @@ function Keypad({currentStatus, setCurrentStatus}) {
             </div>
         </div>
         <button className="keypad-enter" onClick={handleSubmit}>Enter</button>
+        <button className="keypad-clear" onClick={handleClear}>Clear</button>
     </>
     )
 }
