@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <div>
-        <Keypad />
+        <Keypad currentStatus={lock} setCurrentStatus={setLock} />
       </div>
       <h1>{lock ? "Door Locked" : "Door Unlocked"}</h1>
       <div className="card">
